@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p> </p>
+
+<h2> Welcome to Do-It-Yourself Data Analysis (DIYDA)</h2>
+
+<p> You are about to start your own data analysis (DA) with the help of DIYDA. <br/>
+    The application needs to ask you a set of questions to help you in your endeavor. <br/>
+    After each question there's a button to guide you to the page that will help you with the analysis. <br/>
+    This is reflected in the navigation bar. <br/>
+    Because every step will usually depend on the previous one we recommend to start in page 1 (Data Type). <br/>
+    Please, read the questions and be prepared to give meaningful answers in the following pages.<br/>
+    And, do not forget to to upload your csv file below. </p>
+
+
+<!--
+<a href="url">link text</a>
+-->
+<p>1) <a href="/dataType">What type of data file do you have?</a></p>
+
+<p>2) <a href="/sampleData">Do you want to use only a subset of your data?</a></p>
+
+<p>3) <a href="/cleanOne">Do you want to perform a cleaning/tidying of your data (missing values)?</a></p>
+
+<p>4) <a href="/cleanTwo">Do you want to continue with the cleaning (other than missing values)?</a></p>
+
+<p>5) <a href="/visualGraphs">Do you want to display some basic graphics?</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<hr></hr>
+<hr></hr>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/">
+        <table>
+            <tr><td><strong>File to upload:</strong></td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
+
+<div th:if="${message}">
+    <h3 th:text="${message}"/>
+</div>
+
+</body>
+</html>

@@ -40,7 +40,40 @@ public class FileUploadController {
                         "serveFile", path.getFileName().toString()).build().toString())
                 .collect(Collectors.toList()));
 
-        return "uploadForm";
+        return "DIYDA_pages/uploadForm_home";
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Here is the place where we start managing our pages except the home, ///////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @GetMapping("/dataType")
+    public String displayDataTypePage(Model model) throws IOException {
+
+        return "DIYDA_pages/dataType_pag01";
+    }
+
+    @GetMapping("/sampleData")
+    public String displaySampleDataPage(Model model) throws IOException {
+
+        return "DIYDA_pages/sampleData_pag02";
+    }
+
+    @GetMapping("/cleanOne")
+    public String displayCleanOnePage(Model model) throws IOException {
+
+        return "DIYDA_pages/cleanOne_pag03";
+    }
+
+    @GetMapping("/cleanTwo")
+    public String displayCleanTwoPage(Model model) throws IOException {
+
+        return "DIYDA_pages/cleanTwo_pag04";
+    }
+
+    @GetMapping("/visualGraphs")
+    public String displayViasualGraphsPage(Model model) throws IOException {
+
+        return "DIYDA_pages/visualGraphs_pag05";
     }
 
     @GetMapping("/files/{filename:.+}")

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">My Cheeses</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+    <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
+</head>
+<body>
+
+<nav th:fragment="navigation">
+    <a href="/">Home</a> |
+    <a href="/dataType">Data Type</a> |
+    <a href="/sampleData">Sample</a> |
+    <a href="/cleanOne">Clean 1</a> |
+    <a href="/cleanTwo">Clean 2</a> |
+    <a href="/visualGraphs">Visual</a> |
+    <!-- <a href="/cheese/remove">Remove</a> -->
+</nav>
+
+</body>
+</html>
