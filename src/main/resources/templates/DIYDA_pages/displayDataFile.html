@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<h2>Your data:</h2>
+
+<table border="1">
+    <tr>
+        <th th:each="myKey : ${dataHashMap.keySet()}" th:text="${myKey}"></th>
+    </tr>
+    <tr >
+        <td th:each="mapEntry : ${dataHashMap.values()}" th:text="${mapEntry}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,8 +1,16 @@
 package com.portugalruben.DIYDA;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import com.opencsv.CSVReader;
 import com.portugalruben.DIYDA.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -26,6 +34,7 @@ import com.portugalruben.DIYDA.storage.StorageFileNotFoundException;
 public class FileUploadController {
 
     private final StorageService storageService;
+    LinkedHashMap<String, ArrayList> dataFileMap = new LinkedHashMap<>();
 
     @Autowired
     public FileUploadController(StorageService storageService) {
@@ -48,8 +57,112 @@ public class FileUploadController {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     @GetMapping("/dataType")
     public String displayDataTypePage(Model model) throws IOException {
+        Path path = storageService.load("Titanic_orig_short.csv");
+
+        File file = path.toFile();
+        try (
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+
+        ) {
+            CSVReader csvReader = new CSVReader(br);
+
+            // Reading Records One by One in a String array
+        String[] nextRecord;
+        Boolean firstPass = false;
+
+
+            ArrayList<String> aLCOL001 = new ArrayList<>();
+            ArrayList<String> aLCOL002 = new ArrayList<>();
+            ArrayList<String> aLCOL003 = new ArrayList<>();
+            ArrayList<String> aLCOL004 = new ArrayList<>();
+            ArrayList<String> aLCOL005 = new ArrayList<>();
+            ArrayList<String> aLCOL006 = new ArrayList<>();
+            ArrayList<String> aLCOL007 = new ArrayList<>();
+            ArrayList<String> aLCOL008 = new ArrayList<>();
+            ArrayList<String> aLCOL009 = new ArrayList<>();
+            ArrayList<String> aLCOL010 = new ArrayList<>();
+            ArrayList<String> aLCOL011 = new ArrayList<>();
+            ArrayList<String> aLCOL012 = new ArrayList<>();
+
+            String col001 = "";
+            String col002 = "";
+            String col003 = "";
+            String col004 = "";
+            String col005 = "";
+            String col006 = "";
+            String col007 = "";
+            String col008 = "";
+            String col009 = "";
+            String col010 = "";
+            String col011 = "";
+            String col012 = "";
+
+
+            while ((nextRecord = csvReader.readNext()) != null) {
+
+            if (! firstPass) {
+
+                col001 = nextRecord[0];
+                col002 = nextRecord[1];
+                col003 = nextRecord[2];
+                col004 = nextRecord[3];
+                col005 = nextRecord[4];
+                col006 = nextRecord[5];
+                col007 = nextRecord[6];
+                col008 = nextRecord[7];
+                col009 = nextRecord[8];
+                col010 = nextRecord[9];
+                col011 = nextRecord[10];
+                col012 = nextRecord[11];
+                firstPass = true;
+
+
+            } else {
+                aLCOL001.add( nextRecord[0]);
+                //System.out.println(nextRecord[0] + "===========");
+                aLCOL002.add( nextRecord[1]);
+                aLCOL003.add( nextRecord[2]);
+                aLCOL004.add( nextRecord[3]);
+                aLCOL005.add( nextRecord[4]);
+                aLCOL006.add( nextRecord[5]);
+                aLCOL007.add( nextRecord[6]);
+                aLCOL008.add( nextRecord[7]);
+                aLCOL009.add( nextRecord[8]);
+                aLCOL010.add( nextRecord[9]);
+                aLCOL011.add( nextRecord[10]);
+                aLCOL012.add( nextRecord[11]);
+                //System.out.println("==");
+            }
+                dataFileMap.put( col001, aLCOL001);
+                dataFileMap.put( col002, aLCOL002);
+                dataFileMap.put( col003, aLCOL003);
+                dataFileMap.put( col004, aLCOL004);
+                dataFileMap.put( col005, aLCOL005);
+                dataFileMap.put( col006, aLCOL006);
+                dataFileMap.put( col007, aLCOL007);
+                dataFileMap.put( col008, aLCOL008);
+                dataFileMap.put( col009, aLCOL009);
+                dataFileMap.put( col010, aLCOL010);
+                dataFileMap.put( col011, aLCOL011);
+                dataFileMap.put( col012, aLCOL012);
+        }
+
+        //for ( int j = 48; j < 50; j++){
+
+           // System.out.println(dataFileMap.get(col004).get(j));
+        //}
+    }
 
         return "DIYDA_pages/dataType_pag01";
+    }
+
+    @GetMapping("/displayDataFile")
+    public String show(Model model) {
+
+        HashMap<String, ArrayList> dataFileMapToPass = dataFileMap;
+        model.addAttribute("dataHashMap",dataFileMapToPass);
+        return "DIYDA_pages/displayDataFile";
     }
 
     @GetMapping("/sampleData")

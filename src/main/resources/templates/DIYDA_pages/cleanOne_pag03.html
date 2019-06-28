@@ -10,7 +10,69 @@
 
 <h2> Cleaning/tidying the data (part 1). </h2>
 
+<p> Cleaning the data is a very important operation in order to be able to analyze it. <br></br>
+    Many functions used in DA have problems with missing values. Non-standard times and dates are very difficult to operate on, <br></br>
+    and erroneous values (e.g. negative ages) can spoil an analysis. In the present version of our app we are not tidying the data.<br></br>
+    We are going to divide the cleaning in two sections: 1) dealing with missing values, and 2) the rest. <br></br>
+    Before we start our job is necessary to know the spread and structure of the missing data. <br></br>
+    So some info will be generated indicating how many rows have missing data, the average of missing values per column, <br></br>
+    and total percentage of missing values. Click below to proceed.
+</p>
+<p><input action="/" type="submit" value="Generate info on missing values"></input></p>
 
+<p>Your info is available below:</p>
+<textarea rows="6" cols="40">
+    Rows w/ miss. values:  Avg:
+    Columns w miss. values:  Avg:
+    % miss. values/col :
+    Total % of miss. values:
+</textarea>
+
+<p> </p><br></br>
+<p>1) Dealing with missing data. Your first option (a drastic one) is to eliminate all rows with missing values. <br></br>
+    Do you want to do that?
+</p>
+
+<form>
+    <input type="radio" name="clean-01" value="yes" checked="checked"> Yes</input>
+    <input type="radio" name="clean-01" value="no"> No</input>
+</form>
+
+<p> </p><br></br>
+<p>Now, in order to proceed if you haven't eliminated the whole missing data, you need to browse your file:</p>
+<p><input action="/" type="submit" value="View sampled file"></input></p>
+
+<p> </p><br></br>
+<p>Now you have the opportunity of filing the void spaces in the numerical data with zeros, <br></br>
+    NaN or the average value of its neighbors. Please, select the column number and make your choice among the options:
+</p>
+<table>
+    <tr><td>
+        <select name="col-numbers">
+            <option value="col-1">1</option>
+            <option value="col-2">2</option>
+            <option value="col-3">3</option>
+            <option value="col-4">4</option>
+            <option value="col-5">5</option>
+            <option value="col-6">6</option>
+            <option value="col-7">7</option>
+            <option value="col-8">8</option>
+        </select>
+        </td>
+        <td><p> </p></td>
+        <td>
+        <form>
+            <input type="radio" name="clean-01" value="zero" checked="checked"> Zeros</input>
+            <input type="radio" name="clean-01" value="nan"> NaN</input>
+            <input type="radio" name="clean-01" value="avg"> Average</input>
+        </form>
+        </td>
+        <td> </td>
+        <td>
+            <input action="/" type="submit" value="Make changes"></input>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

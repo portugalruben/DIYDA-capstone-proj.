@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+
+    style {
+
+    .button-01 {
+        display: block;
+        width: 115px;
+        height: 25px;
+        background: #4E9CAF;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+    }
+    }
+
+</head>
 
 <body>
 <nav th:replace="fragments :: navigation"></nav>
@@ -9,6 +26,35 @@
 
 <h2> Scales of measurement of your data </h2>
 
+<p> DIYDA needs to know what kind of data you have in your file. <br></br>
+    This means if your data can be classified as nominal (like text analysis), <br></br>
+    ordinal (like your data is organized into categories) or numerical. <br></br>
+    Of course, your data can fall in more than one category, so you may indicate that ticking more than one checkbox below.
+</p>
+
+<form action="/" method="get">
+
+    <table>
+        <tr><td>1) Nominal (text) data.</td><td></td><td><input type="checkbox" name="nominal" value="nominal"> Yes</input></td></tr>
+        <tr><td>2) Ordinal (categorical) data.</td><td></td><td><input type="checkbox" name="ordinal" value="ordinal"> Yes</input></td></tr>
+        <tr><td>3) Numerical data. </td><td></td><td><input type="checkbox" name="numerical" value="numerical"> Yes</input></td></tr>
+    </table>
+    <br></br>
+
+<p>In case of selecting "numerical", does your data includes time series (like dates and times to be operated on)? <br></br>
+    Please, select the appropriate checkbox.</p>
+
+    <input type="radio" name="numerical-yes" value="numerical-yes"> Yes</input><br></br>
+    <input type="radio" name="numerical-no" value="numerical-no" > Not sure yet</input><br></br>
+
+    <input type="submit" value="Submit All"></input>
+</form>
+
+<br></br>
+<p> Now, press the button below to see your file:</p>
+
+<!--<a class="button-01" href="/read_upload">Show me the file!</a>-->
+<a class="button-01" href="/displayDataFile">Show me the file!</a>
 
 </body>
 </html>

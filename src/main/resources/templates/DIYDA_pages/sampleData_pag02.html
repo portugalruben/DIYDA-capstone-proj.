@@ -10,7 +10,73 @@
 
 <h2> Choose a sample file from your original file. </h2>
 
+<p>Starting with a full size file may be very time consuming if you only want exploratory results. <br></br>
+    So, your file can be reduced in size in several ways to save time: <br></br>
+    just selecting randomly the rows, with a given probability, <br></br>
+    or determining how many rows to keep over the given total in an ordered fashion. <br></br>
+    Please, indicate below in which way you want your data reduced, if at all.
+</p>
 
+<table>
+    <form>
+    <tr>
+    <td>
+        <p>1) Reduce data randomly with probability:</p>
+    </td>
+        <td><p>
+            <select name="probabs">
+                <option value="05">0.5</option>
+                <option value="02">0.2</option>
+                <option value="01">0.1</option>
+                <option value="005">0.05</option>
+                <option value="002">0.02</option>
+                <option value="001">0.01</option>
+                <option value="0002">0.002</option>
+                <option value="0001">0.001</option>
+            </select>
+             </p>
+     </td>
+        <td>
+            <input type="radio" name="probab-yes" value="probab-yes"> Yes, with probability.</input>
+        </td>
+    </tr>
+    <tr><td>
+        <p>2) Reduce data by selecting one row in:</p>
+        </td>
+        <td><p>
+            <select name="in-numbers">
+                <option value="in-2">2</option>
+                <option value="in-5">5</option>
+                <option value="in-10">10</option>
+                <option value="in-20">20</option>
+                <option value="in-50">50</option>
+                <option value="in-100">100</option>
+                <option value="in-500">500</option>
+                <option value="in-1000">1000</option>
+            </select>
+            </p>
+        </td>
+        <td>
+            <input type="radio" name="uniform-yes" value="uniform-yes"> Yes, uniformly.</input>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>3) Do not reduce data.</p>
+        </td>
+        <td>
+            <p><input type="radio" name="no-reduction" value="no-reduction"> No reduction</input></p>
+        </td>
+    </tr>
+    </form>
+</table>
+
+<p>Press the button "Go" to change the contents of your file, in order to indicate <br></br>
+    your choice that a sample file is to be generated from your previous file.</p>
+<p><input action="/" type="submit" value="Go with sampling"></input></p>
+
+<p>Your new working file can be viewed pressing the button below:</p>
+<p><input action="/" type="submit" value="View sampled file"></input></p>
 
 </body>
 </html>
